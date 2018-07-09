@@ -105,7 +105,12 @@ public class Email {
 
   private Session getSession() {
 
-    return Session.getInstance(this.properties, null);
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+
+        return new PasswordAuthentication(Email.this.username, Email.this.authentication);
+      }
+    });
   }
 
 }
